@@ -5,7 +5,7 @@ Function to count up the score in the main area.
 //Global for the click value.
 var clickValue = 1;
 
-var clicks = 999999991;
+var clicks = 1;
 
 
 //Ticks up the score when a click is detected.
@@ -20,8 +20,6 @@ function clickDetected(){
     let newbots = bots + clickValue;
 
     clicks = newbots;
-
-    console.log(clicks);
 
     //Calculates the time needed to erase.
     let timeNeeded = (bots.length + 1) * 50;
