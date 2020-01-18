@@ -12,7 +12,7 @@ const fileUrl = './json/shopItems.json' // provide file location
 function initShop()
 {
     //shopItems = JSON.parse(fetch(new Request(fileUrl)).then((response) => { return response.json(); }));
-    shopItems = $.parse("./json/shopItems.json", function () { callback() })
+    shopItems = $.getJSON("./json/shopItems.json", function () { callback() })
         .done(function () { console.log("shop loaded succcessfully"); })
         .fail(function () { console.log("shop loading failed"); })
         .always(function () { console.log("complete"); });
