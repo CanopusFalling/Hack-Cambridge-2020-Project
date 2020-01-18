@@ -17,11 +17,12 @@ var factories = {}
 
 var wallet = {}
 
-update_factories_attributes(ResourceType.SAM, ResourceType.CASH, 1337);
-update_factories_attributes(ResourceType.MAINFRAME, ResourceType.BOT, 42);
-update_factories_attributes(ResourceType.MAINFRAME, ResourceType.SERVER, 101);
-update_factories_attributes(ResourceType.SAM, ResourceType.BOT, 3);
-
+update_factories_attributes(ResourceType.SAM, ResourceType.CASH, IncrementValueType.BASE, 1337);
+update_factories_attributes(ResourceType.MAINFRAME, ResourceType.BOT, IncrementValueType.BASE, 42);
+update_factories_attributes(ResourceType.MAINFRAME, ResourceType.SERVER, IncrementValueType.BASE, 101);
+update_factories_attributes(ResourceType.SAM, ResourceType.BOT, IncrementValueType.BASE, 3);
+add_factories_produce_to_wallet(0.5);
+console.log(wallet);
 
 function add_resources(resourceType, amount)
 {
@@ -36,11 +37,12 @@ function update_factories_attributes(resourceFactoryType, resourceType, incremen
 {
     if (!validate_resource_type(resourceFactoryType)) return;
     if (!validate_resource_type(resourceType)) return;
-    if (!validate_incremental_value_type(incrementValueType)) return;
+    if (!validate_increment_value_type(incrementValueType)) return;
 
     if (!factories.hasOwnProperty(resourceFactoryType)) factories[resourceFactoryType] = new Object();
     if (!factories[resourceFactoryType].hasOwnProperty(resourceType)) factories[resourceFactoryType][resourceType] = create_blank_factory_produce_object();
     factories[resourceFactoryType][resourceType][incrementValueType] += amount;
+    //console.log(factories[resourceFactoryType][resourceType][incrementValueType]);
 }
 
 function add_factories_produce_to_wallet(deltaTime)
@@ -50,7 +52,9 @@ function add_factories_produce_to_wallet(deltaTime)
         if (!Object.prototype.hasOwnProperty.call(factories, factory)) continue;
         for (let produceType in factories[factory])
         {
-            add_resources(produceType, produceType[IncrementValueType.BASE] * produceType[IncrementValueType.BASE_MULTIPLIER] * produceType[IncrementValueType.MULTIPLIER_MULTIPLIER] * deltaTime);
+            if (!Object.prototype.hasOwnProperty.call(factories[factory], produceType)) continue;
+            //console.log(produceType + "|" + factories[factory][produceType][IncrementValueType.BASE] + "*" + produceType[IncrementValueType.BASE_MULTIPLIER] + "*" + produceType[IncrementValueType.MULTIPLIER_MULTIPLIER]);
+            add_resources(produceType, factories[factory][produceType][IncrementValueType.BASE] * factories[factory][produceType][IncrementValueType.BASE_MULTIPLIER] * factories[factory][produceType][IncrementValueType.MULTIPLIER_MULTIPLIER] * deltaTime);
         }
     }
 }
