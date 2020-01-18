@@ -29,6 +29,7 @@
         width: 30%;
         padding: 20px 10px;
         margin: 100px auto;
+        font-size: 1.2em;
         text-align: left;
         /*border-radius: 100%;*/
         color:green;
@@ -57,7 +58,7 @@
     }
 
     /* Floating double bar to thte left boarder around */
-    #doubleBar{
+    .doubleBar{
         display: inline;
         padding: 2px;
         border-style: none none none double;
@@ -65,37 +66,15 @@
         border-width: thick;
     }
 
-    .leftcolumn {   
-        float: left;
-        width: 75%;
-      }
-      
-      /* Right column */
-      .rightcolumn {
-        float: left; 
-        width: 25%;
-        background-color: #f1f1f1;
-        padding-left: 20px;
-      }
-      
-      /* icons? */
-      .img {
-        width: 100%;
-        padding: 20px;
-      }
-      
-      /* Add a card effect for articles */
-      .card {
-        background-color: white;
-        padding: 20px;
-        margin-top: 20px;
-      }
-      
-      /* Clear floats after the columns */
-      .row:after {
-        content: "";
-        display: table;
-        clear: both;
+    /* Stop selection on the double click */
+    .no-select {
+        -webkit-touch-callout: none; /* iOS Safari */
+          -webkit-user-select: none; /* Safari */
+           -khtml-user-select: none; /* Konqueror HTML */
+             -moz-user-select: none; /* Old versions of Firefox */
+              -ms-user-select: none; /* Internet Explorer/Edge */
+                  user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome, Opera and Firefox */
       }
 }
 
