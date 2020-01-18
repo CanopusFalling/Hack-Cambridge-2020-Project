@@ -26,15 +26,15 @@
     */
 
     section#centre-console{
+        position: absolute;
         width: 30%;
         padding: 20px 10px;
-        margin: 100px auto;
+        margin-left: 500px;
         font-size: 1.2em;
         text-align: left;
         /*border-radius: 100%;*/
         color:green;
-        background-color: rgba(0, 0, 0, 0.45);
-        float: right;        
+        background-color: rgba(0, 0, 0, 0.45);      
     }
 
     section#centre-console:hover{
@@ -71,20 +71,43 @@
         float: left;
         padding: 25px 5px;
         width: 350px;
-        
     }
 
+
     table, th, td {
-        border-style: none none double none;
-        border-color: green;
         color: green;
         overflow-x: auto;
+        margin: 15px 5px;
     }
 
     th, td {
+        border-style: none none dashed none;
+        border-color: green;
+        border-width: thin;
         height: 20px;
         text-align: left;
-        padding: 5px;
+        padding: 10px;
+    }
+
+    .flex-container {
+        display: flex;
+        flex-direction: wrap;
+        border-color: green;
+        border-style: double;
+        border-width: thick;
+        padding: 10px 10px;
+        margin-right: 20px;
+        width: 500px;
+        float: right;
+    }
+
+    .flex-container > div {
+        /* background-color: white; */
+        color: green;
+        width: 100px;
+        margin: auto;
+        text-align: center;
+        line-height: 75px;
     }
 
     /* Stop selection on the double click */
