@@ -9,7 +9,7 @@ var clicks = 1;
 
 
 //Ticks up the score when a click is detected.
-function clickDetected(){
+function updateScore(increment){
     //Get the score element as an object.
     let score = document.getElementById("score");
 
@@ -17,7 +17,7 @@ function clickDetected(){
     let bots = clicks;
 
     //Increase the bots by the value.
-    let newbots = bots + clickValue;
+    let newbots = bots + increment;
 
     clicks = newbots;
 
@@ -66,14 +66,11 @@ function eraseNumber(number, div, cycles){
 
 //Waits till the document is loaded to begin loading all the onclick elements.
 document.addEventListener("DOMContentLoaded", function(){
-    //Define the value of a click.
-    let clickValue = 0;
-
     //Defines the objects into variables for later use.
     let centreConsole = document.getElementById("centre-console");
 
     //Adds a listener to the centre console for when it's clicked.
     centreConsole.addEventListener("click", function(){
-        clickDetected();
+        updateScore(clickValue);
     });
 });
