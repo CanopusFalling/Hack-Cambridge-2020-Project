@@ -1,0 +1,41 @@
+/*
+===== Mobile Styles =====
+
+(Not to be implimented till later versions.)
+*/
+
+/*
+===== Desktop Styles =====
+*/
+
+@media only screen and (min-width: 800px) {
+    /*
+    ===== Background Formatting =====
+    - Sets the site font to Ubuntu.
+    - Removes the margin for the body element.
+    */
+    body{
+        margin: 0px;
+        font-family: "Ubuntu", sans-serif;
+    }
+
+    /*
+    ===== Main Area Formatting =====
+    */
+
+    /*
+    ===== Header Formatting =====
+    - Sets the header to be a solid bar at the top of the page.
+    - Deals with the color scheme of the header and the text visability.
+    */
+    header {
+        margin: 0px;
+        padding: 10px 14px;
+        font-size: 2em;
+        width: 100%;
+        color: white;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.45);
+    }
+}
+
