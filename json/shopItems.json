@@ -1,41 +1,43 @@
 {
-    "si0": {
-        "name": "Hack",
-        "desc": "Hack an unsecured device",
-        "price": {},
-        "reward": {
-            "physical": {
-                "COMPROMISED_DEVICE": 1
+    "arr": [
+        {
+            "name": "Hack",
+            "desc": "Hack an unsecured device",
+            "price": {},
+            "reward": {
+                "physical": {
+                    "COMPROMISED_DEVICE": 1
+                }
             }
-        }
-    },
-    "si1": {
-        "name": "Create A Bot",
-        "desc": "Why hack yourself when a bot can do it for you?",
-        "price": {
-            "COMPROMISED_DEVICE": 10
         },
-        "reward": {
-            "physical": {
-                "BOT": 1
+        {
+            "name": "Create A Bot",
+            "desc": "Why hack yourself when a bot can do it for you?",
+            "price": {
+                "COMPROMISED_DEVICE": 10
+            },
+            "reward": {
+                "physical": {
+                    "BOT": 1
+                }
             }
-        }
-    },
-    "si2": {
-        "name": "Speed up your bots",
-        "desc": "You simply removed all the debugging stuff",
-        "price": {
-            "BOT": 10
         },
-        "reward": {
-            "upgrade": {
-                "u1": {
-                    "factoryType": "BOT",
-                    "produceType": "COMPROMISED_DEVICE",
-                    "multiplierType": "BASE",
-                    "value": 1
+        {
+            "name": "Speed up your bots",
+            "desc": "You simply removed all the debugging stuff",
+            "price": {
+                "BOT": 10
+            },
+            "reward": {
+                "upgrade": {
+                    "u1": {
+                        "factoryType": "BOT",
+                        "produceType": "COMPROMISED_DEVICE",
+                        "multiplierType": "BASE",
+                        "value": 1
+                    }
                 }
             }
         }
-    }
+    ]
 }
