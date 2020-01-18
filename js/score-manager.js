@@ -5,8 +5,7 @@ Function to count up the score in the main area.
 //Global for the click value.
 var clickValue = 1;
 
-var clicks = 1;
-
+wallet[ResourceType.COMPROMISED_DEVICE] = 1;
 
 //Ticks up the score when a click is detected.
 function updateScore(increment){
@@ -14,12 +13,12 @@ function updateScore(increment){
     let score = document.getElementById("score");
 
     //Work out the number of bots based off the score.
-    let bots = clicks;
+    let bots = wallet[ResourceType.COMPROMISED_DEVICE];
 
     //Increase the bots by the value.
     let newbots = bots + increment;
 
-    clicks = newbots;
+    wallet[ResourceType.COMPROMISED_DEVICE] = newbots;
 
     //Calculates the time needed to erase.
     let timeNeeded = (bots.length + 1) * 50;
@@ -29,7 +28,7 @@ function updateScore(increment){
 
     //Put the new number in place.
     setTimeout(function() {
-        placeNumber((newbots).toString(), "", score, 10);
+        placeNumber((newbots + clickValue).toString(), "", score, 10);
     }, timeNeeded);
 
     //Output the new bots value.
