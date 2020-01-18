@@ -24,6 +24,11 @@ update_factories_attributes(ResourceType.SAM, ResourceType.BOT, IncrementValueTy
 add_factories_produce_to_wallet(0.5);
 console.log(wallet);
 
+/**
+ * Add [amount] * GLOBAL_MULTIPLIER of [resourceType] to wallet 
+ * @param {string} resourceType 
+ * @param {num} amount 
+ */
 function add_resources(resourceType, amount)
 {
     if (!validate_resource_type(resourceType)) return;
@@ -33,6 +38,13 @@ function add_resources(resourceType, amount)
     wallet[resourceType] += amount * GLOBAL_MULTIPLIER;
 }
 
+/**
+ * Updates how much a single [resourceFactoryType] would produce [resourceType] per second. 
+ * @param {string} resourceFactoryType 
+ * @param {string} resourceType 
+ * @param {string} incrementValueType Where the amount should be applied to.
+ * @param {num} amount 
+ */
 function update_factories_attributes(resourceFactoryType, resourceType, incrementValueType, amount)
 {
     if (!validate_resource_type(resourceFactoryType)) return;
@@ -45,6 +57,10 @@ function update_factories_attributes(resourceFactoryType, resourceType, incremen
     //console.log(factories[resourceFactoryType][resourceType][incrementValueType]);
 }
 
+/**
+ * Automatically calculates how much resources all factories produce in [deltaTime] seconds and add it to wallet
+ * @param {num} deltaTime 
+ */
 function add_factories_produce_to_wallet(deltaTime)
 {
     for (let factory in factories)
@@ -59,6 +75,9 @@ function add_factories_produce_to_wallet(deltaTime)
     }
 }
 
+/**
+ * @returns {Object} a object with all default IncrementValueType attributes added
+ */
 function create_blank_factory_produce_object()
 {
     let o = new Object();
@@ -73,6 +92,10 @@ function create_blank_factory_produce_object()
     return o;
 }
 
+/**
+ * @param {string} resourceType 
+ * @returns {boolean} if [resourceType] exist as an attribute in ResourceType "enum"
+ */
 function validate_resource_type(resourceType)
 {
     if (!ResourceType.hasOwnProperty(resourceType))
@@ -83,6 +106,10 @@ function validate_resource_type(resourceType)
     return true;
 }
 
+/**
+ * @param {string} incrementValueType 
+ * @returns {boolean} if [incrementValueType] exist as an attribute in IncrementValueType "enum"
+ */
 function validate_increment_value_type(incrementValueType)
 {
     if (!IncrementValueType.hasOwnProperty(incrementValueType))
