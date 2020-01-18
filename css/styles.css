@@ -36,6 +36,10 @@
         
     }
 
+    section#centre-console:hover{
+        background-color: rgba(6s0, 60, 60, 0.45);
+    }
+
     /*
     ===== Header Formatting =====
     - Sets the header to be a solid bar at the top of the page.
