@@ -6,12 +6,14 @@ function updateResources(){
     //Make the compiled strings for each line.
     let text = "";
 
-    for (let i = 0; i < ResourceType.length; i++) {
-        const element = ResourceType[i];
+    for (let resource in ResourceType)
+    {
+        if (!ResourceType.hasOwnProperty(resource)) continue;
         
-        if(wallet[element] != 0){
-            text = text + "<tr id='row" + i + "'><th>" + element.text + "</th><th>" + wallet[element] + "</th></tr>"
+        if(wallet[resource] != null){
+            text = text + "<tr><th>" + resource + "</th><th>" + wallet[resource] + "</th></tr>"
         }
+        console.log(wallet[resource]); 
     }
 
     resourcespanel.innerHTML = text;

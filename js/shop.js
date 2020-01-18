@@ -10,58 +10,67 @@ function initShop(callback)
         .always(function () { console.log("complete"); });
 }
 
-function purchase(shopID)
+function purchase(shopItemIndex)
 {
-    if (!can_purchase(shopID)) return false;
+    if (!can_purchase(shopItemIndex)) return false;
 
-    for (let p in shopItems[shopID]["price"])
+    for (let p in shopItems[shopItemIndex]["price"])
     {
         if (!validate_resource_type(p)) continue;
-        wallet[p] -= shopItems[shopID]["price"][p];
+        wallet[p] -= shopItems[shopItemIndex]["price"][p];
     }
 
-    if (shopItems[shopID]["reward"].hasOwnProperty("physical"))
+    if (shopItems[shopItemIndex]["reward"].hasOwnProperty("physical"))
     {
-        for (let p in shopItems[shopID]["reward"]["physical"])
+        for (let p in shopItems[shopItemIndex]["reward"]["physical"])
         {
             if (!validate_resource_type(p)) continue;
-            wallet[p] += shopItems[shopID]["reward"]["physical"][p];
+            wallet[p] += shopItems[shopItemIndex]["reward"]["physical"][p];
         }
     }
 
-    if (shopItems[shopID]["reward"].hasOwnProperty("upgrade"))
+    if (shopItems[shopItemIndex]["reward"].hasOwnProperty("upgrade"))
     {
         let tempObj;
-        for (let u in shopItems[shopID]["reward"]["upgrade"])
+        for (let u in shopItems[shopItemIndex]["reward"]["upgrade"])
         {
-            if (!shopItems[shopID]["reward"]["upgrade"].hasOwnProperty(u)) continue;
-            tempObj = shopItems[shopID]["reward"]["upgrade"][u]; //if this is NOT an obj, swap the function below
+            if (!shopItems[shopItemIndex]["reward"]["upgrade"].hasOwnProperty(u)) continue;
+            tempObj = shopItems[shopItemIndex]["reward"]["upgrade"][u]; //if this is NOT an obj, swap the function below
             update_factories_attributes(tempObj["factoryType"], tempObj["produceType"], tempObj["multiplierType"], tempObj["value"]);
         }
     }
-
-
+    reveal_new_item();
     return true;
 }
 
-function can_purchase(shopID)
+function can_purchase(shopItemIndex)
 {
-    if (!validate_shop_id(shopID)) return false;
-    if (!shopItems[shopID].hasOwnProperty("price")) return true;
-    for (let p in shopItems[shopID]["price"])
+    if (!validate_shop_id(shopItemIndex)) return false;
+    if (!shopItems[shopItemIndex].hasOwnProperty("price")) return true;
+    for (let p in shopItems[shopItemIndex]["price"])
     {
         if (!validate_resource_type(p)) continue;
-        if (wallet[p] < shopItems[shopID]["price"][p]) return false;
+        if (wallet[p] < shopItems[shopItemIndex]["price"][p]) return false;
     }
     return true;
 }
 
-function validate_shop_id(shopID)
+function validate_shop_id(shopItemIndex)
 {
-    if (!shopItems.hasOwnProperty(shopID))
+    if (shopItemIndex < 0 || shopItemIndex >= shopItems.length)
     {
-        console.log(shopID + " is not a valid shop id!");
+        console.log(shopItemIndex + " is not a valid shop id!");
         return false;
     }
     return true;
+}
+
+function reveal_new_item()
+{
+    thingsToShow++;
+}
+
+function get_revealed_items()
+{
+    return shopItems.slice(0, Math.max(thingsToShow, shopItems.length));
 }
