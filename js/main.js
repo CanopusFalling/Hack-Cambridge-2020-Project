@@ -33,6 +33,14 @@ add_resources(ResourceType.BOT, 5);
 add_factories_produce_to_wallet(0.5);
 console.log(wallet);
 
+function init_wallet()
+{
+    for (let r in ResourceType)
+    {
+        if (ResourceType.hasOwnProperty(r)) wallet[r] = 0;
+    }
+}
+
 /**
  * Add [amount] * GLOBAL_MULTIPLIER of [resourceType] to wallet 
  * @param {string} resourceType 
@@ -41,9 +49,6 @@ console.log(wallet);
 function add_resources(resourceType, amount)
 {
     if (!validate_resource_type(resourceType)) return;
-
-    if (!wallet.hasOwnProperty(resourceType)) wallet[resourceType] = 0;
-
     wallet[resourceType] += amount * GLOBAL_MULTIPLIER;
 }
 
