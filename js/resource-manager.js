@@ -20,5 +20,6 @@ function updateResources(){
         updateResources();
     }, 1000);
 }
-
-updateResources();
+document.addEventListener("DOMContentLoaded", function(){
+    updateResources();
+});
