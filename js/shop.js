@@ -1,10 +1,18 @@
+const itemCostMultiplierBase = 1.15;
+//const jQuery = require('./lib/jquery-3.4.1.min.js');
 var shopItems;
 
 var thingsToShow = 1;
 
-function initShop(callback)
+const fileUrl = './json/shopItems.json' // provide file location
+
+
+//initShop(() => console.log("callback"));
+
+function initShop()
 {
-    shopItems = $.getJSON("example.json", function () { callback() })
+    //shopItems = JSON.parse(fetch(new Request(fileUrl)).then((response) => { return response.json(); }));
+    shopItems = $.parse("./json/shopItems.json", function () { callback() })
         .done(function () { console.log("shop loaded succcessfully"); })
         .fail(function () { console.log("shop loading failed"); })
         .always(function () { console.log("complete"); });
@@ -17,7 +25,7 @@ function purchase(shopItemIndex)
     for (let p in shopItems[shopItemIndex]["price"])
     {
         if (!validate_resource_type(p)) continue;
-        wallet[p] -= shopItems[shopItemIndex]["price"][p];
+        wallet[p] -= Math.ceil(shopItems[shopItemIndex]["price"][p] * Math.pow(itemCostMultiplierBase, wallet[p]));
     }
 
     if (shopItems[shopItemIndex]["reward"].hasOwnProperty("physical"))
@@ -50,7 +58,7 @@ function can_purchase(shopItemIndex)
     for (let p in shopItems[shopItemIndex]["price"])
     {
         if (!validate_resource_type(p)) continue;
-        if (wallet[p] < shopItems[shopItemIndex]["price"][p]) return false;
+        if (wallet[p] < Math.ceil(shopItems[shopItemIndex]["price"][p] * Math.pow(itemCostMultiplierBase, wallet[p]))) return false;
     }
     return true;
 }
