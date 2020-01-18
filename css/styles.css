@@ -10,11 +10,27 @@
 
 @media only screen and (min-width: 800px) {
     /*
-    Background Formatting
+    ===== Background Formatting =====
+    */
+    body{
+        margin: 0px
+    }
+
+    /*
+    ===== Main Area Formatting =====
     */
 
     /*
-    Main Area Formatting
+    ===== Header Formatting =====
     */
+    header {
+        margin: 0px;
+        padding: 10px 14px;
+        font-size: 2em;
+        width: 100%;
+        color: white;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.45);
+    }
 }
 
