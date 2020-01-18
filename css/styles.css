@@ -34,7 +34,7 @@
         /*border-radius: 100%;*/
         color:green;
         background-color: rgba(0, 0, 0, 0.45);
-        
+        float: right;        
     }
 
     section#centre-console:hover{
@@ -64,6 +64,27 @@
         border-style: none none none double;
         border-color: green;
         border-width: thick;
+    }
+
+    .leftpanel {
+        display: fixed;
+        float: left;
+        padding: 25px 5px;
+        width: 350px;
+        
+    }
+
+    table, th, td {
+        border-style: none none double none;
+        border-color: green;
+        color: green;
+        overflow-x: auto;
+    }
+
+    th, td {
+        height: 20px;
+        text-align: left;
+        padding: 5px;
     }
 
     /* Stop selection on the double click */
