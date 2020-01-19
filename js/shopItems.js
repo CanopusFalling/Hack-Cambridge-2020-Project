@@ -54,10 +54,10 @@ var shopItems = [
         reward: {
             upgrade: {
                 u1: {
-                    factoryType: ResourceType.BOT,
-                    produceType: ResourceType.SERVER,
+                    factoryType: ResourceType.SERVER,
+                    produceType: ResourceType.BOT,
                     multiplierType: IncrementValueType.BASE,
-                    value: 1
+                    value: 3
                 }
             }
         }
