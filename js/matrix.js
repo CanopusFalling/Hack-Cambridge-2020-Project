@@ -13,7 +13,7 @@ let font_size = 10;
 let columns = c.width / font_size; //number of columns for the rain
 //an array of drops - one per column
 let drops = [];
-for (let x = 0; x < columns * 25; x++)
+for (let x = 0; x < columns * 15; x++)
 	drops[x] = 1;
 
 //drawing the characters
@@ -39,8 +39,7 @@ function draw()
 
 		//sending the drop back to the top randomly after it has crossed the screen
 		//adding a randomness to the reset to make the drops scattered on the Y axis
-		if (drops[i] * font_size > c.height && Math.random() > 0.975)
-			drops[i] = 0;
+		if (drops[i] * font_size > c.height && Math.random() > 0.06 * Math.pow(wallet[ResourceType.COMPROMISED_DEVICE] + 1, -0.0005) + 0.94) drops[i] = 0;
 
 		//incrementing Y coordinate
 		drops[i]++;

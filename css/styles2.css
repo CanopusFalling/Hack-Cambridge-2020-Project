@@ -53,6 +53,7 @@ header {
     text-align: center;
     align-self: center;
     background-color: rgba(0, 0, 0, 0.7);  
+    
 }
 
 .button-desc{
@@ -102,12 +103,22 @@ main > div{
 }
 
 #shop-panel{
+    color: white;
     background-color: rgba(0, 0, 0, 0.45);
     min-width: 25%;
     height: 100%;
     overflow-y: scroll;
     width: fit-content;
     padding: 10px;
+    box-shadow: -3px -1px 3px rgba(0,0,0,0.45);
+}
+
+#shop-items{
+    margin: 10px 0px 0px 10px;
+}
+
+#shop-items hr{
+    margin: 8px 0px;
 }
 
 .shop-item{
@@ -118,7 +129,12 @@ main > div{
     border-radius: 10px;
     padding: 10px;
     width: 88%;
-    margin: 2px;
+    margin: 3px 2px;
+}
+
+.shop-item-title{
+    display: flex;
+    flex-direction: row;
 }
 
 .shop-item img{
@@ -126,7 +142,13 @@ main > div{
     height: 50px;
 }
 
-#shop-panel .doubleBar{
+.shop-item-name{
+    margin: 8px 3%;
+    font-weight: bolder;
+    font-size: 1.15em;
+}
+
+#shop-panel .doubleBar, #resources-panel .doubleBar{
     display: block;
     margin: 10px;
     font-size: 1.4em;
@@ -143,9 +165,40 @@ main > div{
 }
 
 .shop-item-price > ul{
-    list-style: none;
+    /* list-style: none; */
+    margin-left: 25px;
 }
 
+#resources-panel{
+    color: white;
+    min-width: 25%;
+    height: 100%;
+    width: 100%;
+    padding: 10px 3% 10px 1%;
+    max-width: 25%;
+}
+
+
+#resources-panel table{
+    color: white;
+    width: 100%;  
+    margin: 10px 1%;
+    padding-left: 2%;
+    border: 1px solid white;
+    background-color: black;
+    text-align: left;
+    
+}
+
+#resources-table th{
+    padding-left: 2%;
+    max-width: 75px;
+}
+#resources-table td:nth-child(3){
+    padding-right: 2%;
+    text-align: center;
+    max-width: 10px;
+}
 
 
 

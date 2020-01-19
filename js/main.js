@@ -17,11 +17,15 @@ const IncrementValueType = {
     BASE_MULTIPLIER: 'BASE_MULTIPLIER',
     MULTIPLIER_MULTIPLIER: 'MULTIPLIER_MULTIPLIER',
 }
+const GAME_LOOP_DELTA = 1000;
+
 var GLOBAL_MULTIPLIER = 1;
 
 var factories = {}
 
 var wallet = {}
+
+var rateOfGain = {};
 
 /* init_wallet();
 update_factories_attributes(ResourceType.BOT, ResourceType.COMPROMISED_DEVICE, IncrementValueType.BASE, 1337);
@@ -32,13 +36,38 @@ add_factories_produce_to_wallet(0.5);
 console.log(wallet);
 add_resources(ResourceType.BOT, 5);
 add_factories_produce_to_wallet(0.5);
-console.log(wallet);
- */
+console.log(wallet); */
+
+
+
+function start_game()
+{
+    init_wallet();
+    init_rate_of_gain();
+    init_purchase_count();
+    setInterval(game_loop, GAME_LOOP_DELTA);
+}
+
+function game_loop()
+{
+    add_factories_produce_to_wallet(GAME_LOOP_DELTA / 1000);
+    parse_all_revealed_items(document.getElementById("shop-items"));
+}
+
+
 function init_wallet()
 {
     for (let r in ResourceType)
     {
         if (ResourceType.hasOwnProperty(r)) wallet[r] = 0;
+    }
+}
+
+function init_rate_of_gain()
+{
+    for (let r in ResourceType)
+    {
+        if (ResourceType.hasOwnProperty(r)) rateOfGain[r] = 0;
     }
 }
 
@@ -78,7 +107,7 @@ function update_factories_attributes(resourceFactoryType, resourceType, incremen
  */
 function add_factories_produce_to_wallet(deltaTime)//this is wrong
 {
-    let amountToAdd = new Object();
+    init_rate_of_gain();
     for (let walletItem in wallet)
     {
         if (!wallet.hasOwnProperty(walletItem)) continue;
@@ -87,16 +116,16 @@ function add_factories_produce_to_wallet(deltaTime)//this is wrong
         for (let factoryProduce in factories[walletItem])
         {
             if (!factories[walletItem].hasOwnProperty(factoryProduce)) continue;
-            if (!amountToAdd.hasOwnProperty(factoryProduce)) amountToAdd[factoryProduce] = 0;
-            amountToAdd[factoryProduce] += wallet[walletItem] * factories[walletItem][factoryProduce][IncrementValueType.BASE] * factories[walletItem][factoryProduce][IncrementValueType.BASE_MULTIPLIER] * factories[walletItem][factoryProduce][IncrementValueType.MULTIPLIER_MULTIPLIER];
+            rateOfGain[factoryProduce] += wallet[walletItem] * factories[walletItem][factoryProduce][IncrementValueType.BASE] * factories[walletItem][factoryProduce][IncrementValueType.BASE_MULTIPLIER] * factories[walletItem][factoryProduce][IncrementValueType.MULTIPLIER_MULTIPLIER];
             //console.log(wallet[walletItem] + "*" + factories[walletItem][factoryProduce][IncrementValueType.BASE] + "*" + factories[walletItem][factoryProduce][IncrementValueType.BASE_MULTIPLIER] * factories[walletItem][factoryProduce][IncrementValueType.MULTIPLIER_MULTIPLIER]);
         }
     }
-    for (let resource in amountToAdd)
+    for (let resource in rateOfGain)
     {
         //console.log(amountToAdd[resource]);
-        if (!amountToAdd.hasOwnProperty(resource)) continue;
-        add_resources(resource, amountToAdd[resource] * deltaTime);
+        if (!rateOfGain.hasOwnProperty(resource)) continue;
+
+        add_resources(resource, rateOfGain[resource] * deltaTime);
     }
 }
 

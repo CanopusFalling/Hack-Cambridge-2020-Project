@@ -1,5 +1,7 @@
 const itemCostMultiplierBase = 1.15;
-var thingsToShow = 3;
+var thingsToShow = 10;
+
+var purchaseCount;
 
 /* function initShop(s)
 {
@@ -11,6 +13,15 @@ var thingsToShow = 3;
     //    .always(function () { console.log("complete"); });
 } */
 
+function init_purchase_count()
+{
+    purchaseCount = [shopItems.length];
+    for (let i = 0; i < shopItems.length; i++)
+    {
+        purchaseCount[i] = 0;
+    }
+}
+
 function purchase(shopItemIndex)
 {
     if (!can_purchase(shopItemIndex)) return false;
@@ -18,7 +29,7 @@ function purchase(shopItemIndex)
     for (let p in shopItems[shopItemIndex]["price"])
     {
         if (!validate_resource_type(p)) continue;
-        wallet[p] -= Math.ceil(shopItems[shopItemIndex]["price"][p] * Math.pow(itemCostMultiplierBase, wallet[p]));
+        wallet[p] -= get_price(shopItemIndex, p);
     }
 
     if (shopItems[shopItemIndex]["reward"].hasOwnProperty("physical"))
@@ -40,20 +51,34 @@ function purchase(shopItemIndex)
             update_factories_attributes(tempObj["factoryType"], tempObj["produceType"], tempObj["multiplierType"], tempObj["value"]);
         }
     }
-    reveal_new_item();
+    purchaseCount[shopItemIndex]++;
+    if (shopItemIndex == thingsToShow - 1) reveal_new_item();
     return true;
 }
 
 function can_purchase(shopItemIndex)
 {
-    if (!validate_shop_id(shopItemIndex)) return false;
+    if (!validate_shop_id(shopItemIndex))
+    {
+        console.log("Invalid Id!");
+        return false;
+    }
     if (!shopItems[shopItemIndex].hasOwnProperty("price")) return true;
     for (let p in shopItems[shopItemIndex]["price"])
     {
         if (!validate_resource_type(p)) continue;
-        if (wallet[p] < Math.ceil(shopItems[shopItemIndex]["price"][p] * Math.pow(itemCostMultiplierBase, wallet[p]))) return false;
+        if (wallet[p] < get_price(shopItemIndex, p))
+        {
+            console.log(wallet[p] + "<" + get_price(shopItemIndex, p));
+            return false;
+        }
     }
     return true;
+}
+
+function get_price(shopItemIndex, type)
+{
+    return Math.ceil(shopItems[shopItemIndex]["price"][type] * Math.pow(itemCostMultiplierBase, purchaseCount[shopItemIndex]));
 }
 
 function validate_shop_id(shopItemIndex)
@@ -80,27 +105,31 @@ function parse_all_revealed_items(domLocation)
 {
     domLocation.innerHTML = "";
     let revealedItems = get_revealed_items();
-    for (let i = 0; i < revealedItems.length; i++)
+    for (let i = domLocation.childElementCount; i < revealedItems.length; i++)
     {
-        parse_shop_item(revealedItems[i], domLocation).addEventListener("click", () => purchase(i));//can add wrapper to add to DOM so color change on hover
+        parse_shop_item(i, domLocation).addEventListener("click", () => console.log(purchase(i)));//can add wrapper to add to DOM so color change on hover
     }
 }
 
-function parse_shop_item(item, domLocation)
+function parse_shop_item(index, domLocation)
 {
+    let item = shopItems[index];
     let a = document.createElement("div");
     a.setAttribute("class", "shop-item");
     domLocation.appendChild(a);
 
+    let a0 = document.createElement("div");
+    a0.setAttribute("class", "shop-item-title");
     let a1 = document.createElement("img")
     a1.setAttribute("src", item["imgSrc"]);
     a1.setAttribute("class", "shop-item-img");
-    a.appendChild(a1);
+    a0.appendChild(a1);
 
     a1 = document.createElement("div");
     a1.setAttribute("class", "shop-item-name");
     a1.append(document.createTextNode(item["name"]));
-    a.appendChild(a1);
+    a0.appendChild(a1);
+    a.appendChild(a0);
 
     if (item.hasOwnProperty("price"))
     {
@@ -117,10 +146,12 @@ function parse_shop_item(item, domLocation)
         {
             if (!item["price"].hasOwnProperty(type)) continue;
             a3 = document.createElement("li");
-            a3.appendChild(document.createTextNode(item["price"][type] + " " + type));
+            a3.appendChild(document.createTextNode(getNicerResourceName(type, get_price(index, type))));
             a2.appendChild(a3);
         }
+        if (item.hasOwnProperty("desc")) a1.appendChild(document.createElement("hr"));
     }
+
     if (item.hasOwnProperty("desc"))
     {
         a1 = document.createElement("div");
