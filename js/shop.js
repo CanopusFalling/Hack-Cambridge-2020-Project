@@ -1,5 +1,5 @@
-const itemCostMultiplierBase = 1.15;
-var thingsToShow = 10;
+const itemCostMultiplierBase = 1.12;
+var thingsToShow = 1;
 
 var purchaseCount;
 
@@ -53,6 +53,8 @@ function purchase(shopItemIndex)
     }
     purchaseCount[shopItemIndex]++;
     if (shopItemIndex == thingsToShow - 1) reveal_new_item();
+
+    parse_all_revealed_items(document.getElementById("shop-items"));
     return true;
 }
 
@@ -98,7 +100,7 @@ function reveal_new_item()
 
 function get_revealed_items()
 {
-    return shopItems.slice(0, Math.max(thingsToShow, shopItems.length));
+    return shopItems.slice(0, Math.min(thingsToShow, shopItems.length));
 }
 
 function parse_all_revealed_items(domLocation)
