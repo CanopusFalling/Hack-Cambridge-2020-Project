@@ -1,15 +1,5 @@
 var shopItems = [
-    {
-        name: "Hack",
-        desc: "Hack an unsecured device",
-        imgSrc: "pics/bot.png",
 
-        reward: {
-            physical: {
-                COMPROMISED_DEVICE: 1
-            }
-        }
-    },
     {
         name: "Create A Bot",
         desc: "Why hack yourself when a bot can do it for you?",
@@ -42,41 +32,30 @@ var shopItems = [
         }
     },
     {
-        name: "Hack",
-        desc: "Hack an unsecured device",
-        imgSrc: "pics/bot.png",
-
-        reward: {
-            physical: {
-                COMPROMISED_DEVICE: 1
-            }
-        }
-    },
-    {
-        name: "Create A Bot",
-        desc: "Why hack yourself when a bot can do it for you?",
-        imgSrc: "pics/bot.png",
+        name: "Take over server",
+        desc: "You take over a low security Guugal server",
+        imgSrc: "pics/server.png",
         price: {
-            COMPROMISED_DEVICE: 10
+            BOT: 30
         },
         reward: {
             physical: {
-                BOT: 1
+                SERVER: 1
             }
         }
     },
     {
-        name: "Speed up your bots",
-        desc: "You simply removed all the debugging stuff",
-        imgSrc: "pics/bot.png",
+        name: "Speed up overtaking of servers",
+        desc: "Use bots to make your life easier; no pain, all gain.",
+        imgSrc: "pics/server.png",
         price: {
-            BOT: 10
+            BOT: 40
         },
         reward: {
             upgrade: {
                 u1: {
                     factoryType: ResourceType.BOT,
-                    produceType: ResourceType.COMPROMISED_DEVICE,
+                    produceType: ResourceType.SERVER,
                     multiplierType: IncrementValueType.BASE,
                     value: 1
                 }
@@ -84,44 +63,69 @@ var shopItems = [
         }
     },
     {
-        name: "Hack",
-        desc: "Hack an unsecured device",
-        imgSrc: "pics/bot.png",
-
+        name: "Take over a satellite",
+        desc: "Take over a junky not low satellite",
+        imgSrc: "pics/satellitecol.png",
+        price: {
+            SERVER: 20
+        },
         reward: {
             physical: {
-                COMPROMISED_DEVICE: 1
+                SATELLITE: 1
             }
         }
     },
     {
-        name: "Create A Bot",
-        desc: "Why hack yourself when a bot can do it for you?",
-        imgSrc: "pics/bot.png",
+        name: "Utilise AI",
+        desc: "Use big data collected from satellites to develop AI",
+        imgSrc: "pics/ai.png",
         price: {
-            COMPROMISED_DEVICE: 10
+            SATELLITE: 3
         },
         reward: {
             physical: {
-                BOT: 1
+                AI: 1
             }
         }
     },
     {
-        name: "Speed up your bots",
-        desc: "You simply removed all the debugging stuff",
-        imgSrc: "pics/bot.png",
+        name: "Create A Cyborg",
+        desc: "An adorable mini-you to do all your warfare for you! It's all you've ever wanted!",
+        imgSrc: "pics/cyborg.png",
         price: {
-            BOT: 10
+            AI: 10
         },
         reward: {
-            upgrade: {
-                u1: {
-                    factoryType: ResourceType.BOT,
-                    produceType: ResourceType.COMPROMISED_DEVICE,
-                    multiplierType: IncrementValueType.BASE,
-                    value: 1
-                }
+            physical: {
+                CYBORG: 1
+            }
+        }
+    },
+    {
+        name: "Hack a missile",
+        desc: "It's like a pet fish! With bonus damage!",
+        imgSrc: "pics/missile.png",
+        price: {
+            CYBORG: 10
+        },
+        reward: {
+            physical: {
+                MISSILE: 1
+            }
+        }
+    },
+    {
+        name: "Create a singularity",
+        desc: "The student has become the master. You are now the inferior one. Don't take it too badly.",
+        imgSrc: "pics/singularity.png",
+        price: {
+            CYBORG: 100,
+            MISSILE: 30,
+            AI: 200
+        },
+        reward: {
+            physical: {
+                SINGULARITY: 1
             }
         }
     }
