@@ -82,9 +82,7 @@
         color: white;
         text-align: center;
         align-self: center;
-        background-color: rgba(0, 0, 0, 0.45);
-
-        
+        background-color: rgba(0, 0, 0, 0.45);  
     }
 
     /* Floating double bar to thte left boarder around */

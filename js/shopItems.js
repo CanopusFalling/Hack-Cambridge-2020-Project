@@ -2,7 +2,7 @@ var shopItems = [
     {
         name: "Hack",
         desc: "Hack an unsecured device",
-        imgScr: "",
+        imgSrc: "pics/bot.png",
 
         reward: {
             physical: {
@@ -13,7 +13,7 @@ var shopItems = [
     {
         name: "Create A Bot",
         desc: "Why hack yourself when a bot can do it for you?",
-        imgScr: "",
+        imgSrc: "pics/bot.png",
         price: {
             COMPROMISED_DEVICE: 10
         },
@@ -26,7 +26,7 @@ var shopItems = [
     {
         name: "Speed up your bots",
         desc: "You simply removed all the debugging stuff",
-        imgScr: "",
+        imgSrc: "pics/bot.png",
         price: {
             BOT: 10
         },
