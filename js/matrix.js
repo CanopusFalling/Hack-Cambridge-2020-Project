@@ -1,4 +1,4 @@
-var c = document.getElementById("thing");
+var c = document.getElementById("c");
 var ctx = c.getContext("2d");
 
 //making the canvas full screen
@@ -34,7 +34,7 @@ function draw()
 	{
 		//a random chinese character to print
 		var text = characters[Math.floor(Math.random()*characters.length)];
-		//x = i*font_size, y = value of drops[i]*font_size
+
 		ctx.fillText(text, i*font_size, drops[i]*font_size);
 		
 		//sending the drop back to the top randomly after it has crossed the screen
