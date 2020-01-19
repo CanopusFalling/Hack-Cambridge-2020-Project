@@ -8,13 +8,15 @@
     <title>Hacky Boi</title>
     <meta name="author" content="random name generator">
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
     <!-- <script src="lib/jquery-3.4.1.min.js"></script> -->
-    <script type="text" src="json/shopItems.json"></script>
+    <!-- <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script> -->
+    <!-- <script type="text" src="json/shopItems.json" id="shopItems"></script> -->
+
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/score-manager.js"></script>
     <script type="text/javascript" src="js/resource-manager.js"></script>
+    <script type="text/javascript" src="js/shopItems.js"></script>
     <script type="text/javascript" src="js/shop.js"></script>
 
 </head>
@@ -25,8 +27,7 @@
 
 </body>
 <script>
-
-    initShop();
+    console.log(get_revealed_items());
 </script>
 
 </html>

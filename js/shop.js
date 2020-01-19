@@ -1,22 +1,15 @@
 const itemCostMultiplierBase = 1.15;
-//const jQuery = require('./lib/jquery-3.4.1.min.js');
-var shopItems;
+var thingsToShow = 3;
 
-var thingsToShow = 1;
-
-const fileUrl = './json/shopItems.json' // provide file location
-
-
-//initShop(() => console.log("callback"));
-
-function initShop()
+/* function initShop(s)
 {
-    //shopItems = JSON.parse(fetch(new Request(fileUrl)).then((response) => { return response.json(); }));
-    shopItems = $.getJSON("./json/shopItems.json", function () { callback() })
-        .done(function () { console.log("shop loaded succcessfully"); })
-        .fail(function () { console.log("shop loading failed"); })
-        .always(function () { console.log("complete"); });
-}
+    console.log(s);
+    //shopItems = JSON.parse(s.innerHTML).then((response) => { return response.json(); });
+    //shopItems = $.getJSON("./json/shopItems.json", function () { callback() })
+    //    .done(function () { console.log("shop loaded succcessfully"); })
+    //    .fail(function () { console.log("shop loading failed"); })
+    //    .always(function () { console.log("complete"); });
+} */
 
 function purchase(shopItemIndex)
 {
@@ -81,4 +74,58 @@ function reveal_new_item()
 function get_revealed_items()
 {
     return shopItems.slice(0, Math.max(thingsToShow, shopItems.length));
+}
+
+function parse_all_revealed_items(domLocation)
+{
+    domLocation.innerHTML = "";
+    let revealedItems = get_revealed_items();
+    for (let item in revealedItems)
+    {
+        parse_shop_item(item, domLocation);
+    }
+}
+
+function parse_shop_item(item, domLocation)
+{
+    let a = document.createElement("div");
+    a.setAttribute("class", "shop-item");
+    domLocation.appendChild(a);
+
+    let a1 = document.createElement("img")
+    a1.setAttribute("scr", item["imgScr"]);
+    a1.setAttribute("class", "shop-item-img");
+    a.appendChild(a1);
+
+    a1 = document.createElement("div");
+    a1.setAttribute("class", "shop-item-name");
+    a1.append(document.createTextNode(item["name"]));
+    a.appendChild(a1);
+
+    if (a.hasOwnProperty("price"))
+    {
+        a1 = document.createElement("div");
+        a1.setAttribute("class", "shop-item-price");
+        a.appendChild(a1);
+        a1.appendChild(document.createTextNode("Cost:"));
+
+        let a2 = document.createElement("ul");
+        a1.appendChild(a2);
+
+        let a3;
+        for (let type in item["price"])
+        {
+            if (!item["price"].hasOwnProperty(type)) continue;
+            a3 = document.createElement("li");
+            a3.appendChild(document.createTextNode(item["price"][type] + " " + type));
+            a2.appendChild(a3);
+        }
+    }
+    if (a.hasOwnProperty("desc"))
+    {
+        a1 = document.createElement("div");
+        a1.setAttribute("class", "shop-item-desc");
+        a1.appendChild(document.createTextNode(item["desc"]));
+        a.appendChild(a1);
+    }
 }
