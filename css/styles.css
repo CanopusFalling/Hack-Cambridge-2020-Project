@@ -118,7 +118,6 @@
     table, th, td {
         color: green;
         overflow-x: auto;
-        margin: 15px 5px;
     }
 
     th, td {
