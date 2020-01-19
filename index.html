@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <title>Hacky Boi</title>
     <meta name="author" content="random name generator">
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/score-manager.js"></script>
@@ -17,8 +17,13 @@
 <!-- All the displayed HTML is in here -->
 
 <body>
+    
     <div id="background-animations">
-
+        <svg>
+            <rect class="background-cover" x="0" y="0">
+        </svg>
+        <canvas id="c"></canvas>
+        <script src="js/matrix.js"></script>
     </div>
 
     <header>
