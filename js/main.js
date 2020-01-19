@@ -23,6 +23,7 @@ var factories = {}
 
 var wallet = {}
 
+/* init_wallet();
 update_factories_attributes(ResourceType.BOT, ResourceType.COMPROMISED_DEVICE, IncrementValueType.BASE, 1337);
 update_factories_attributes(ResourceType.MAINFRAME, ResourceType.BOT, IncrementValueType.BASE, 42);
 update_factories_attributes(ResourceType.MAINFRAME, ResourceType.SERVER, IncrementValueType.BASE, 101);
@@ -32,7 +33,7 @@ console.log(wallet);
 add_resources(ResourceType.BOT, 5);
 add_factories_produce_to_wallet(0.5);
 console.log(wallet);
-
+ */
 function init_wallet()
 {
     for (let r in ResourceType)
@@ -88,10 +89,12 @@ function add_factories_produce_to_wallet(deltaTime)//this is wrong
             if (!factories[walletItem].hasOwnProperty(factoryProduce)) continue;
             if (!amountToAdd.hasOwnProperty(factoryProduce)) amountToAdd[factoryProduce] = 0;
             amountToAdd[factoryProduce] += wallet[walletItem] * factories[walletItem][factoryProduce][IncrementValueType.BASE] * factories[walletItem][factoryProduce][IncrementValueType.BASE_MULTIPLIER] * factories[walletItem][factoryProduce][IncrementValueType.MULTIPLIER_MULTIPLIER];
+            //console.log(wallet[walletItem] + "*" + factories[walletItem][factoryProduce][IncrementValueType.BASE] + "*" + factories[walletItem][factoryProduce][IncrementValueType.BASE_MULTIPLIER] * factories[walletItem][factoryProduce][IncrementValueType.MULTIPLIER_MULTIPLIER]);
         }
     }
     for (let resource in amountToAdd)
     {
+        //console.log(amountToAdd[resource]);
         if (!amountToAdd.hasOwnProperty(resource)) continue;
         add_resources(resource, amountToAdd[resource] * deltaTime);
     }

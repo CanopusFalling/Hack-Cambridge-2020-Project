@@ -38,10 +38,10 @@
     */
 
     section#centre-console{
-        position: absolute;
+        position: relative;
         width: 30%;
         padding: 20px 10px;
-        margin-left: 500px;
+        margin: 30px auto;
         font-size: 1.2em;
         text-align: left;
         /*border-radius: 100%;*/
@@ -73,14 +73,16 @@
     - Deals with the color scheme of the header and the text visability.
     */
     header {
-        display: inline;
+        display: block;
         margin: 0px;
         padding: 10px 14px;
         font-size: 2em;
         /* width: 100%; */
         color: white;
         text-align: center;
-        background-color: rgba(0, 0, 0, 0.05);
+        align-self: center;
+        background-color: rgba(0, 0, 0, 0.45);
+
         
     }
 
@@ -98,6 +100,18 @@
         float: left;
         padding: 25px 5px;
         width: 350px;
+    }
+
+
+    table{
+        position: absolute;
+        width: 30%;
+        height: 100%;
+        overflow-y: scroll;
+        left: 0px;
+        top: 0px;
+        background-color: rgba(60, 60, 60, 0.45);
+        margin: 0px;
     }
 
     table, th, td {
@@ -161,6 +175,43 @@
               -ms-user-select: none; /* Internet Explorer/Edge */
                   user-select: none; /* Non-prefixed version, currently
                                         supported by Chrome, Opera and Firefox */
-      }
+    }
+
+    #shop-panel{
+        position: absolute;
+        width: 30%;
+        height: 100%;
+        overflow-y: scroll;
+        right: 0px;
+        top: 0px;
+        background-color: rgba(50, 50, 50, 0.45);
+        padding: 10px;
+        color: white;
+    }
+
+    .shop-item{
+        display: inline-block;
+        border: solid;
+        border-color: white;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .shop-item img{
+        width: 50px;
+        height: 50px;
+    }
+
+    #shop-panel .doubleBar{
+        display: block;
+        margin: 10px;
+        font-size: 1.4em;
+    }
+
+    .shop-item-description{
+        background-color: black;
+        padding: 6px;
+
+    }
 }
 

@@ -10,10 +10,14 @@ function updateResources(){
     {
         if (!ResourceType.hasOwnProperty(resource)) continue;
         
-        if(wallet[resource] != null){
-            text = text + "<tr><th>" + resource + "</th><th>" + wallet[resource] + "</th></tr>"
+        if(wallet[resource] != null && wallet[resource] != 0){
+            text = text + "<tr><th>" + resource;
+
+            if(wallet[resource] > 1){
+                text = text + "S"
+            }
+            text = text + "</th><th>" + wallet[resource] + "</th></tr>"
         }
-        console.log(wallet[resource]); 
     }
 
     resourcespanel.innerHTML = text;
@@ -22,6 +26,9 @@ function updateResources(){
         updateResources();
     }, 1000);
 }
+
+init_wallet();
+
 document.addEventListener("DOMContentLoaded", function(){
     updateResources();
 });
