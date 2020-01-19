@@ -8,7 +8,8 @@ var clickValue = 1;
 wallet[ResourceType.COMPROMISED_DEVICE] = 1;
 
 //Ticks up the score when a click is detected.
-function updateScore(increment){
+function updateScore(increment)
+{
     //Get the score element as an object.
     let score = document.getElementById("score");
 
@@ -27,7 +28,8 @@ function updateScore(increment){
     eraseNumber(bots.toString(), score, 10);
 
     //Put the new number in place.
-    setTimeout(function() {
+    setTimeout(function ()
+    {
         placeNumber((newbots + clickValue).toString(), "", score, 10);
     }, timeNeeded);
 
@@ -35,41 +37,49 @@ function updateScore(increment){
     score.innerHTML = bots
 }
 
-function placeNumber(finalNum, num, div, cycles){
+function placeNumber(finalNum, num, div, cycles)
+{
     num = num + finalNum[num.length];
 
     div.innerHTML = num;
 
     cycles = cycles - 1;
 
-    if(num.length != finalNum.length && cycles > 10){
-        setTimeout(function() {
+    if (num.length != finalNum.length && cycles > 10)
+    {
+        setTimeout(function ()
+        {
             placeNumber(finalNum, num, div, cycles);
         }, 50);
     }
 }
 
-function eraseNumber(number, div, cycles){
+function eraseNumber(number, div, cycles)
+{
     number[cycles] = '0';
 
-    cycles = cycles -1;
+    cycles = cycles - 1;
 
     div.innerHTML = number;
 
-    if(number.length != 0 && cycles > 0){
-        setTimeout(function() {
+    if (number.length != 0 && cycles > 0)
+    {
+        setTimeout(function ()
+        {
             eraseNumber(number, div, cycles);
         }, 50);
     }
 }
 
 //Waits till the document is loaded to begin loading all the onclick elements.
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function ()
+{
     //Defines the objects into variables for later use.
     let centreConsole = document.getElementById("centre-console");
 
     //Adds a listener to the centre console for when it's clicked.
-    centreConsole.addEventListener("click", function(){
+    centreConsole.addEventListener("click", function ()
+    {
         updateScore(clickValue);
     });
 });
