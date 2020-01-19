@@ -18,7 +18,6 @@ function updateResources(){
             }
             text = text + "</th><th>" + wallet[resource] + "</th></tr>"
         }
-        console.log(wallet[resource]); 
     }
 
     resourcespanel.innerHTML = text;
