@@ -4,7 +4,7 @@ function updateResources(){
     let resourcespanel = document.getElementById("resources-panel");
 
     //Make the compiled strings for each line.
-    let text = "";
+    let text = "<table>";
 
     for (let resource in ResourceType)
     {
@@ -19,6 +19,8 @@ function updateResources(){
             text = text + "</th><th>" + wallet[resource] + "</th></tr>"
         }
     }
+
+    text = text + "</text>";
 
     resourcespanel.innerHTML = text;
 
