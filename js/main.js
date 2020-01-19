@@ -39,21 +39,21 @@ add_resources(ResourceType.BOT, 5);
 add_factories_produce_to_wallet(0.5);
 console.log(wallet); */
 
-
+var test;
 
 function start_game()
 {
     init_wallet();
     init_rate_of_gain();
     init_purchase_count();
+    parse_all_revealed_items(document.getElementById("shop-items"));
     setInterval(game_loop, GAME_LOOP_DELTA);
 }
 
 function game_loop()
 {
     add_factories_produce_to_wallet(GAME_LOOP_DELTA / 1000);
-    parse_all_revealed_items(document.getElementById("shop-items"));
-}
+}  
 
 
 function init_wallet()
