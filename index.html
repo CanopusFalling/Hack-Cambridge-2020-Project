@@ -8,7 +8,8 @@
     <title>Hacky Boi</title>
     <meta name="author" content="random name generator">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles2.css">
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/score-manager.js"></script>
     <script type="text/javascript" src="js/resource-manager.js"></script>
@@ -17,39 +18,74 @@
 <!-- All the displayed HTML is in here -->
 
 <body>
-    
-    <div id="background-animations">
-        <svg>
-            <rect class="background-cover" x="0" y="0">
-        </svg>
-        <canvas id="c"></canvas>
-        <script src="js/matrix.js"></script>
-    </div>
-
     <header>
         <div class="doubleBar">
             Hack The World!
         </div>
-        
     </header>
-
+    <div id="background-animations">
+        <!-- <svg>
+            <rect class="background-cover" x="0" y="0">
+        </svg> -->
+        <canvas id="c"></canvas>
+        <script src="js/matrix.js"></script>
+    </div>
     <main>
-        <section id="centre-console" class="no-select">
-            <p class="doubleBar">CLICK TO HACK</p>
-            <p>Bots Aquired: <span id="score">0</span></p>
-        </section>
+        <div>
+            <div id="resources-panel">
+                <table>
+                    <tr>
+                        <th>Resource 1</th>
+                        <th>stuff 1</th>
+                    </tr>
+                    <tr>
+                        <th>Resource 2</th>
+                        <th>stuff 2</th>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="centre-console" class="no-select">
+                <div>
+                    <p class="doubleBar">CLICK TO HACK</p>
+                    <p>Bots Aquired: <span id="score">0</span></p>
+                </div>
+            </div>
+
+            <div id="shop-panel">
+                <div class="doubleBar">
+                    Shop
+                </div>
+                <div id="shop-items">
+                    <div class="shop-item"><img src="pics/bot.png" class="shop-item-img">
+                        <div class="shop-item-name">Hack</div>
+                        <div class="shop-item-desc">Hack an unsecured device</div>
+                    </div>
+                    <div class="shop-item"><img src="pics/bot.png" class="shop-item-img">
+                        <div class="shop-item-name">Create A Bot</div>
+                        <div class="shop-item-price">Cost:
+                            <ul>
+                                <li>10 COMPROMISED_DEVICE</li>
+                            </ul>
+                        </div>
+                        <div class="shop-item-desc">Why hack yourself when a bot can do it for you?</div>
+                    </div>
+                    <div class="shop-item"><img src="pics/bot.png" class="shop-item-img">
+                        <div class="shop-item-name">Speed up your bots</div>
+                        <div class="shop-item-price">Cost:
+                            <ul>
+                                <li>10 BOT</li>
+                            </ul>
+                        </div>
+                        <div class="shop-item-desc">You simply removed all the debugging stuff</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <table id="resources-panel">
-        <tr>
-            <th>Resource 1</th> 
-            <th>stuff 1</th>
-        </tr>
-        <tr>
-            <th>Resource 2</th>
-            <th>stuff 2</th>
-        </tr>
-    </table>
+
+
 
     <!--
     <div class="flex-container">
@@ -60,40 +96,7 @@
     </div>
     -->
 
-    <section id="shop-panel"> 
-        <div class="doubleBar">
-            Shop
-        </div>
-        <div id="shop-items">
-            <div class="shop-item" id="shop-item1">
-                <img src="pics/bot.png">
-                <div class="shop-item-description" id="shop-item-description1">
-                    Cost: 100 [currency type]<br>
-                    *Desc Here*
-                </div>
-            </div>
-            <div class="shop-item" id="shop-item1">
-                <img src="pics/bot.png">
-                <div class="shop-item-description" id="shop-item-description1">
-                    Cost: <br>100 [currency type]<br>
-                    100 [currency type]<br>
-                    100 [currency type]<br>
-                    100 [currency type]<br>
-                    100 [currency type]<br>
-                    <div class="item-description">
-                        *Desc Here*
-                    </div>
-                </div>
-            </div>
-            <div class="shop-item" id="shop-item1">
-                <img src="pics/bot.png">
-                <div class="shop-item-description" id="shop-item-description1">
-                    Cost: 100 [currency type]<br>
-                    *Desc Here*
-                </div>
-            </div>
-        </div>
-    </section>
+
 
 </body>
 

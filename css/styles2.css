@@ -1,0 +1,141 @@
+:root{
+    --main-height: var()
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#background-animations{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    pointer-events: none;
+}
+
+#background-animations #c{
+    min-width: 1024px;
+    min-height: 100%;
+    width: 100%;
+    height: auto;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    pointer-events: none;
+}
+
+.doubleBar{
+    display: inline;
+    padding: 2px 6px;
+    border-style: none none none double;
+    border-color: green;
+    border-width: thick;
+}
+
+header {
+    display: block;
+    padding: 10px 14px;
+    font-size: 2em;
+    /* width: 100%; */
+    color: white;
+    text-align: center;
+    align-self: center;
+    background-color: rgba(0, 0, 0, 0.45);  
+}
+
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Opera and Firefox */
+}
+
+main{
+    width: 100%;
+}
+main > div{
+    flex-direction: row;
+    display: flex;
+    height: 100%;
+}
+
+#centre-console{
+    background-color: green;
+    align-items: center;
+    text-align: center;
+    width:100%;
+    min-width: 35%;
+}
+
+/*another class or somethingwhatever im lazy*/
+#centre-console > div{
+    color: green;
+    background-color: rgba(200, 200, 200, 0.45);
+    width: fit-content;
+    margin: 55px auto;
+    padding: 12px 5%;
+    border-radius: 5px;
+}
+
+#resources-panel{
+    min-width: 25%;
+    background-color: brown;
+}
+
+#shop-panel{
+    background-color: blue;
+    min-width: 25%;
+    height: 100%;
+    overflow-y: scroll;
+    width: fit-content;
+    padding: 10px;
+}
+
+.shop-item{
+    display: inline-block;
+    border: solid;
+    border-color: white;
+    background-color: gray;
+    border-radius: 10px;
+    padding: 10px;
+    width: 88%;
+    margin: 2px;
+}
+
+.shop-item img{
+    width: 50px;
+    height: 50px;
+}
+
+#shop-panel .doubleBar{
+    display: block;
+    margin: 10px;
+    font-size: 1.4em;
+}
+
+.shop-item-description{
+    background-color: black;
+    padding: 6px;
+
+}
+
+.shop-item-valid:hover{
+    background-color: rgba(50, 50, 50, 0.45);
+}
+
+.shop-item-price > ul{
+    list-style: none;
+}
+
+
+

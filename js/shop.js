@@ -93,7 +93,7 @@ function parse_shop_item(item, domLocation)
     domLocation.appendChild(a);
 
     let a1 = document.createElement("img")
-    a1.setAttribute("scr", item["imgScr"]);
+    a1.setAttribute("src", item["imgSrc"]);
     a1.setAttribute("class", "shop-item-img");
     a.appendChild(a1);
 
