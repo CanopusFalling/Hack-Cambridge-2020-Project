@@ -20,6 +20,7 @@
         margin: 0;
         padding: 0;
     }
+
     body{
         margin: 0px;
         font-family: Consolas, monaco, monospace;
@@ -195,6 +196,8 @@
         border-color: white;
         border-radius: 10px;
         padding: 10px;
+        width: 88%;
+        margin: 2px;
     }
 
     .shop-item img{
@@ -212,6 +215,10 @@
         background-color: black;
         padding: 6px;
 
+    }
+
+    .shop-item-valid:hover{
+        background-color: rgba(50, 50, 50, 0.45);
     }
 }
 
