@@ -26,7 +26,20 @@ function updateResources()
     setTimeout(function ()
     {
         updateResources();
+        checkShop();
     }, 100);
+}
+
+function checkShop(){
+    let shop = document.getElementById("shop-items");
+
+    let items = shop.children;
+
+    for (let i = 0; i < items.length; i++) {
+        if(can_purchase(i)){
+            items[i].className = "shop-item-valid shop-item ";
+        }
+    }
 }
 
 init_wallet();
@@ -39,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function ()
 function getNicerResourceName(s, amount)
 {
     let sa = s.replace("_", " ").toLowerCase();
-    if (amount > 1 || amount < -1) sa = sa + "s";
+    if ((amount > 1) || amount < -1) sa = sa + "s";
     return amount + " " + sa;
+    
 }

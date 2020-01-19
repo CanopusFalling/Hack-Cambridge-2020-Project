@@ -161,7 +161,7 @@ main > div{
 }
 
 .shop-item-valid:hover{
-    background-color: rgba(50, 50, 50, 0.45);
+    background-color: rgba(0, 255, 0, 0.6);
 }
 
 .shop-item-price > ul{
@@ -194,6 +194,7 @@ main > div{
     padding-left: 2%;
     max-width: 75px;
 }
+
 #resources-table td:nth-child(3){
     padding-right: 2%;
     text-align: center;
