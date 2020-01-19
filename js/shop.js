@@ -80,9 +80,9 @@ function parse_all_revealed_items(domLocation)
 {
     domLocation.innerHTML = "";
     let revealedItems = get_revealed_items();
-    for (let item in revealedItems)
+    for (let i = 0; i < revealedItems.length; i++)
     {
-        parse_shop_item(item, domLocation);
+        parse_shop_item(revealedItems[i], domLocation).addEventListener("click", () => purchase(i));//can add wrapper to add to DOM so color change on hover
     }
 }
 
@@ -102,7 +102,7 @@ function parse_shop_item(item, domLocation)
     a1.append(document.createTextNode(item["name"]));
     a.appendChild(a1);
 
-    if (a.hasOwnProperty("price"))
+    if (item.hasOwnProperty("price"))
     {
         a1 = document.createElement("div");
         a1.setAttribute("class", "shop-item-price");
@@ -121,11 +121,12 @@ function parse_shop_item(item, domLocation)
             a2.appendChild(a3);
         }
     }
-    if (a.hasOwnProperty("desc"))
+    if (item.hasOwnProperty("desc"))
     {
         a1 = document.createElement("div");
         a1.setAttribute("class", "shop-item-desc");
         a1.appendChild(document.createTextNode(item["desc"]));
         a.appendChild(a1);
     }
+    return a;
 }
