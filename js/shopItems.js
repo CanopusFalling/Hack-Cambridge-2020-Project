@@ -111,7 +111,7 @@ var shopItems = [
         desc: "That AI can get you some sweet satellite loot",
         imgSrc: "pics/ai.png",
         price: {
-            SATELITE: 20
+            SATELLITE: 20
         },
         reward: {
             upgrade: {
